@@ -1,0 +1,15 @@
+.cards {
+  display: flex;
+  padding: 15px;
+  gap: 25px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  margin: 0 auto;
+}
+.main {
+  max-width: 90%;
+  margin: 0 auto;
+}
