@@ -58,4 +58,5 @@ CardFilm.propTypes = {
   shortdescription: PropTypes.string,
   country: PropTypes.string,
 };
+
 export default CardFilm;

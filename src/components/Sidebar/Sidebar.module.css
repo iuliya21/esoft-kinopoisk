@@ -1,0 +1,23 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  background-color: #101010;
+  padding: 40px 20px;
+  border-right: 1px solid #ccc;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.container {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+.title {
+  margin: 0;
+
+}
