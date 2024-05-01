@@ -3,3 +3,6 @@
   align-items: center;
   column-gap: 8px;
 }
+.active {
+  border-color: rgb(2, 92, 2);
+}

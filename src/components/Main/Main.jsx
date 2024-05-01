@@ -9,51 +9,106 @@ function Main() {
 
   const [currentFilms, setCurrentFilms] = useState();
   const [sortAscending, setSortAscending] = useState(true);
+  const [activeButtons, setActiveButtons] = useState({
+    film: false,
+    multfilm: false,
+    serial: false,
+    sort: false,
+  });
+
+  const filmList = films.filter((film) => film.type === "film");
+  const multfilmList = films.filter((film) => film.type === "multfilm");
+  const serialList = films.filter((film) => film.type === "serial");
 
   useEffect(() => {
     setCurrentFilms(films);
   }, [films]);
 
-  const sortingRate = () => {
+  const sortRate = () => {
     const sortingFilms = [...currentFilms].sort((a, b) =>
-    sortAscending ? a.rating - b.rating : b.rating - a.rating
+      sortAscending ? a.rating - b.rating : b.rating - a.rating
     );
     setCurrentFilms(sortingFilms);
-    setSortAscending(prevState => !prevState)
+    setSortAscending((prevState) => !prevState);
+    setActiveButtons((prevState) => ({
+      ...prevState,
+      sort: true,
+    }))
+  };
+
+  const sortType = (type) => {
+    switch (type) {
+      case "film":
+        setCurrentFilms(filmList);
+        setActiveButtons((prevState) => ({
+          ...prevState,
+          film: true,
+          multfilm: false,
+          serial: false
+        }))
+        break;
+      case "multfilm":
+        setCurrentFilms(multfilmList);
+        setActiveButtons((prevState) => ({
+          ...prevState,
+          film: false,
+          multfilm: true,
+          serial: false
+        }))
+        break;
+      case "serial":
+        setCurrentFilms(serialList);
+        setActiveButtons((prevState) => ({
+          ...prevState,
+          film: false,
+          multfilm: false,
+          serial: true
+        }))
+        break;
+      default:
+        break;
+    }
+  };
+
+  const clearFilter = () => {
+    setCurrentFilms(films);
+    setActiveButtons((prevState) => ({
+      ...prevState,
+      film: false,
+      multfilm: false,
+      serial: false,
+      sort: false
+    }))
   };
 
   if (!currentFilms) return;
 
   return (
     <div className={styles.main}>
-      <SortPanel handleRate={sortingRate} />
+      <SortPanel
+        handleRate={sortRate}
+        clearFilter={clearFilter}
+        activeButtonSort={activeButtons.sort}
+        activeButtonFilm={activeButtons.film}
+        activeButtonMultfilm={activeButtons.multfilm}
+        activeButtonSerial={activeButtons.serial}
+        sortType={sortType}
+      />
       <ul className={styles.cards}>
-        {currentFilms.map(
-          ({
-            id,
-            title,
-            image,
-            rating,
-            release,
-            actors,
-            genres,
-            shortdescription,
-            country,
-          }) => (
-            <li key={id}>
-              <CardFilm
-                title={title}
-                url={image}
-                rate={rating}
-                year={release}
-                actors={actors}
-                genres={genres}
-                shortdescription={shortdescription}
-                country={country}
-              />
-            </li>
-          )
-        )}
+        {currentFilms.map((film) => (
+          <li key={film.id}>
+            <CardFilm
+              title={film.title}
+              url={film.image}
+              rate={film.rating}
+              year={film.release}
+              actors={film.actors}
+              genres={film.genres}
+              shortdescription={film.shortdescription}
+              country={film.country}
+            />
+          </li>
+        ))}
       </ul>
     </div>
   );

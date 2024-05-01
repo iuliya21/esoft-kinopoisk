@@ -1,12 +1,18 @@
 import PropTypes from "prop-types";
 import SearchIcon from "@mui/icons-material/Search";
+import ImportExportIcon from "@mui/icons-material/ImportExport";
 import styles from "./Button.module.css";
 
-function Button({ text, search, onClick }) {
+function Button({ text, search, onClick, iconSort, active }) {
   return (
     <div>
-      <button className={styles.button} onClick={() => onClick()}>
-        {text} {search && <SearchIcon />}
+      <button
+        className={
+          active ? `${styles.button} ${styles.active}` : `${styles.button}`
+        }
+        onClick={() => onClick()}
+      >
+        {text} {search && <SearchIcon />} {iconSort && <ImportExportIcon />}
       </button>
     </div>
   );
@@ -15,7 +21,9 @@ function Button({ text, search, onClick }) {
 Button.propTypes = {
   text: PropTypes.string,
   search: PropTypes.bool,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  iconSort: PropTypes.bool,
+  active: PropTypes.bool,
 };
 
 export default Button;
