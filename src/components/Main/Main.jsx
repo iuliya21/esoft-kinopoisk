@@ -33,7 +33,7 @@ function Main() {
     setActiveButtons((prevState) => ({
       ...prevState,
       sort: true,
-    }))
+    }));
   };
 
   const sortType = (type) => {
@@ -44,8 +44,8 @@ function Main() {
           ...prevState,
           film: true,
           multfilm: false,
-          serial: false
-        }))
+          serial: false,
+        }));
         break;
       case "multfilm":
         setCurrentFilms(multfilmList);
@@ -53,8 +53,8 @@ function Main() {
           ...prevState,
           film: false,
           multfilm: true,
-          serial: false
-        }))
+          serial: false,
+        }));
         break;
       case "serial":
         setCurrentFilms(serialList);
@@ -62,8 +62,8 @@ function Main() {
           ...prevState,
           film: false,
           multfilm: false,
-          serial: true
-        }))
+          serial: true,
+        }));
         break;
       default:
         break;
@@ -77,8 +77,8 @@ function Main() {
       film: false,
       multfilm: false,
       serial: false,
-      sort: false
-    }))
+      sort: false,
+    }));
   };
 
   if (!currentFilms) return;
@@ -97,16 +97,7 @@ function Main() {
       <ul className={styles.cards}>
         {currentFilms.map((film) => (
           <li key={film.id}>
-            <CardFilm
-              title={film.title}
-              url={film.image}
-              rate={film.rating}
-              year={film.release}
-              actors={film.actors}
-              genres={film.genres}
-              shortdescription={film.shortdescription}
-              country={film.country}
-            />
+            <CardFilm film={film} />
           </li>
         ))}
       </ul>

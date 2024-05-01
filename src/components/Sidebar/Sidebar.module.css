@@ -10,7 +10,6 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  row-gap: 20px;
 }
 .container {
   display: flex;
@@ -19,5 +18,15 @@
 }
 .title {
   margin: 0;
-
+}
+.listFilms {
+  margin: 10px 0;
+  padding: 0 20px;
+  list-style-type: none;
+}
+.elementList {
+  display: flex;
+}
+.clearIcon {
+  cursor: pointer;
 }

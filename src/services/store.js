@@ -15,5 +15,41 @@ export const useFilmsStore = create()(
         console.error(err);
       }
     },
+    favoritesFilms: [],
+    addFavoriteFilm: (film) => {
+      set((state) => {
+        if (!state.favoritesFilms.find((favFilm) => favFilm.id === film.id)) {
+          return { favoritesFilms: [...state.favoritesFilms, film] };
+        }
+        return state;
+      });
+    },
+    removeFavoriteFilm: (id) => {
+      set((state) => {
+        return {
+          favoritesFilms: [
+            ...state.favoritesFilms.filter((favFilm) => favFilm.id !== id),
+          ],
+        };
+      });
+    },
+    laterFilms: [],
+    addLaterFilm: (film) => {
+      set((state) => {
+        if (!state.laterFilms.find((latFilm) => latFilm.id === film.id)) {
+          return { laterFilms: [...state.laterFilms, film] };
+        }
+        return state;
+      });
+    },
+    removeLaterFilm: (id) => {
+      set((state) => {
+        return {
+          laterFilms: [
+            ...state.laterFilms.filter((latFilm) => latFilm.id !== id),
+          ],
+        };
+      });
+    },
   }))
 );
