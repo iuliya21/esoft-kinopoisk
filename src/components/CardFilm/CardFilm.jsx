@@ -63,7 +63,7 @@ function CardFilm({ film }) {
         </div>
         <p
           className={
-            film.rate >= 7.5
+            film.rate >= 8.2
               ? `${styles.rating} ${styles.colorGreen}`
               : film.rate < 5
               ? `${styles.rating} ${styles.colorRed}`

@@ -1,0 +1,68 @@
+.page {
+  max-width: 50%;
+  margin: 40px auto 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.container {
+  display: flex;
+  column-gap: 60px;
+}
+.description {
+  display: flex;
+  flex-direction: column;
+  row-gap: 45px;
+}
+.image {
+  width: 300px;
+}
+p,
+h2 {
+  margin: 0;
+}
+.title {
+  font-size: 34px;
+}
+.text {
+  font-size: 20px;
+}
+.age {
+  color: grey;
+  font-style: italic;
+  font-size: 18px;
+}
+.header {
+}
+.subdescription {
+}
+.subdescription .text {
+  font-size: 16px;
+}
+.rate {
+  font-weight: 700;
+  font-size: 18px;
+}
+.colorGreen {
+  color: green;
+}
+.colorRed {
+  color: rgb(215, 38, 7);
+}
+.comments {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.pagination {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.pageCurrent {
+  font-size: 20px;
+}
+.arrow {
+  cursor: pointer;
+}
