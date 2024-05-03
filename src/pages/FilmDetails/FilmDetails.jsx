@@ -2,10 +2,9 @@ import { useParams } from "react-router-dom";
 import styles from "./FilmDetails.module.css";
 import { useFilmsStore } from "../../services/store";
 import Comment from "../../components/Comment/Comment.jsx";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
+import Pagination from "../../components/Pagination/Pagination.jsx";
 
 const comments = [
   {
@@ -38,6 +37,7 @@ function FilmDetails() {
 
   const maxCommentPage = 3;
   const countPages = Math.ceil(comments.length / maxCommentPage);
+
   const indexStart =
     Math.floor(countPages / maxCommentPage) +
     (currentPage - 1) * maxCommentPage;
@@ -45,19 +45,19 @@ function FilmDetails() {
 
   const film = films.find((el) => el.id === Number(params.filmId));
 
-  if (!film) return null;
+  if (!film) return;
 
   const actors = film.actors.join(", ");
   const genres = film.genres.join(", ");
 
   const handleNextPage = () => {
-    if(currentPage < countPages) {
+    if (currentPage < countPages) {
       setCurrentPage((prev) => prev + 1);
     }
   };
 
   const handleLastPage = () => {
-    if(currentPage > 1) {
+    if (currentPage > 1) {
       setCurrentPage((prev) => prev - 1);
     }
   };
@@ -93,20 +93,15 @@ function FilmDetails() {
       </div>
       <div className={styles.comments}>
         <h2>Комментарии</h2>
-        {comments.slice(indexStart, indexEnd).map(com => (
-          <Comment key={uuid()} user={com.author} comment={com.comment}/>
+        {comments.slice(indexStart, indexEnd).map((com) => (
+          <Comment key={uuid()} user={com.author} comment={com.comment} />
         ))}
-        <div className={styles.pagination}>
-          <ArrowBackIosNewIcon
-            className={styles.arrow}
-            onClick={() => handleLastPage()}
-          />
-          <p className={styles.pageCurrent}>{currentPage}</p>
-          <ArrowForwardIosIcon
-            className={styles.arrow}
-            onClick={() => handleNextPage()}
-          />
-        </div>
+
+        <Pagination
+          currentPage={currentPage}
+          handleNextPage={handleNextPage}
+          handleLastPage={handleLastPage}
+        />
       </div>
     </div>
   );
