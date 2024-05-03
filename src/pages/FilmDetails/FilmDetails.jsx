@@ -13,9 +13,7 @@ function FilmDetails() {
 
   const film = films.find((el) => el.id === Number(params.filmId));
 
- 
   if (!film) return;
-  console.log(film)
   const maxCommentPage = 3;
   const countPages = Math.ceil(film.comments.length / maxCommentPage);
 
