@@ -10,3 +10,7 @@
 .arrow {
   cursor: pointer;
 }
+.inactive {
+  color: grey;
+  cursor: default;
+}

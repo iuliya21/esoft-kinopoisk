@@ -6,46 +6,23 @@ import { useState } from "react";
 import { v4 as uuid } from "uuid";
 import Pagination from "../../components/Pagination/Pagination.jsx";
 
-const comments = [
-  {
-    author: "1",
-    comment:
-      "Каждый раз, когда смотрю этот мультфильм, вновь переживаю все эмоции детства. История игрушек 3 - настоящая шедеврная симфония чувств!",
-  },
-  {
-    author: "2",
-    comment:
-      "Каждый персонаж, каждая сцена, каждая мелочь - все это напоминает мне о том, как прекрасно было быть ребенком. Это не просто мультфильм, это кусочек нашего детства.",
-  },
-  {
-    author: "3",
-    comment:
-      "История игрушек 3 - это не только продолжение, это погружение в атмосферу незабвенных воспоминаний. Эмоционально, трогательно, но и с глубоким смыслом",
-  },
-  {
-    author: "4",
-    comment:
-      "Как же здорово, что эта история о дружбе, верности и принятии себя снова и снова возвращается в мою жизнь. Этот фильм как лучший друг, который всегда рядом",
-  },
-];
-
 function FilmDetails() {
   const { films } = useFilmsStore();
   const params = useParams();
-
   const [currentPage, setCurrentPage] = useState(1);
 
+  const film = films.find((el) => el.id === Number(params.filmId));
+
+ 
+  if (!film) return;
+  console.log(film)
   const maxCommentPage = 3;
-  const countPages = Math.ceil(comments.length / maxCommentPage);
+  const countPages = Math.ceil(film.comments.length / maxCommentPage);
 
   const indexStart =
     Math.floor(countPages / maxCommentPage) +
     (currentPage - 1) * maxCommentPage;
   const indexEnd = indexStart + 3;
-
-  const film = films.find((el) => el.id === Number(params.filmId));
-
-  if (!film) return;
 
   const actors = film.actors.join(", ");
   const genres = film.genres.join(", ");
@@ -93,14 +70,20 @@ function FilmDetails() {
       </div>
       <div className={styles.comments}>
         <h2>Комментарии</h2>
-        {comments.slice(indexStart, indexEnd).map((com) => (
-          <Comment key={uuid()} user={com.author} comment={com.comment} />
+        {film.comments.slice(indexStart, indexEnd).map((com) => (
+          <Comment
+            key={uuid()}
+            user={com.author}
+            comment={com.comment}
+            date={com.date}
+          />
         ))}
 
         <Pagination
           currentPage={currentPage}
           handleNextPage={handleNextPage}
           handleLastPage={handleLastPage}
+          countPages={countPages}
         />
       </div>
     </div>
