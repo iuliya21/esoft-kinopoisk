@@ -5,11 +5,17 @@ import Comment from "../../components/Comment/Comment.jsx";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
 import Pagination from "../../components/Pagination/Pagination.jsx";
+import Button from "../../components/Button/Button.jsx";
+import { useModal } from "../../hooks/useModal.js";
+import Modal from "../../components/Modal/Modal.jsx";
+import FormAddComment from "../../components/FormAddComment//FormAddComment.jsx";
 
 function FilmDetails() {
   const { films } = useFilmsStore();
   const params = useParams();
   const [currentPage, setCurrentPage] = useState(1);
+
+  const { isModalOpen, openModal, closeModal } = useModal();
 
   const film = films.find((el) => el.id === Number(params.filmId));
 
@@ -67,7 +73,11 @@ function FilmDetails() {
         </div>
       </div>
       <div className={styles.comments}>
-        <h2>Комментарии</h2>
+        <div className={styles.headerComments}>
+          <h2>Комментарии</h2>
+          <Button text="Добавить комментарий" onClick={() => openModal()}/>
+        </div>
+
         {film.comments.slice(indexStart, indexEnd).map((com) => (
           <Comment
             key={uuid()}
@@ -84,6 +94,13 @@ function FilmDetails() {
           countPages={countPages}
         />
       </div>
+
+      {isModalOpen && (
+        <Modal onClosePopup={closeModal}>
+          <FormAddComment />
+        </Modal>
+      )}
+
     </div>
   );
 }

@@ -55,3 +55,7 @@ h2 {
   flex-direction: column;
   row-gap: 20px;
 }
+.headerComments {
+  display: flex;
+  justify-content: space-between;
+}
