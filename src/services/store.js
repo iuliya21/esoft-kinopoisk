@@ -15,6 +15,17 @@ export const useFilmsStore = create()(
         console.error(err);
       }
     },
+    addComment: (idFilm, comment) => {
+      set((state) => {
+        const filmIndex = state.films.findIndex((film) => film.id === idFilm);
+        const updatedFilms = [...state.films];
+        updatedFilms[filmIndex] = {
+          ...updatedFilms[filmIndex],
+          "comments": [comment, ...updatedFilms[filmIndex].comments],
+        };
+        return { films: updatedFilms };
+      });
+    },
     favoritesFilms: [],
     addFavoriteFilm: (film) => {
       set((state) => {

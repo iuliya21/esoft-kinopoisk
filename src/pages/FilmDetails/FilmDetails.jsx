@@ -17,7 +17,9 @@ function FilmDetails() {
 
   const { isModalOpen, openModal, closeModal } = useModal();
 
-  const film = films.find((el) => el.id === Number(params.filmId));
+  const filmId = Number(params.filmId);
+
+  const film = films.find((el) => el.id === filmId);
 
   if (!film) return;
   const maxCommentPage = 3;
@@ -97,7 +99,7 @@ function FilmDetails() {
 
       {isModalOpen && (
         <Modal onClosePopup={closeModal}>
-          <FormAddComment />
+          <FormAddComment closeModal={closeModal} filmId={filmId}/>
         </Modal>
       )}
 

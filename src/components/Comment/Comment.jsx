@@ -2,6 +2,7 @@ import styles from "./Comment.module.css";
 import PropTypes from "prop-types";
 
 function Comment({ user, comment, date }) {
+
   const commentDate = new Date(date);
 
   let day = commentDate.getDate();

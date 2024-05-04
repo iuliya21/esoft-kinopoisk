@@ -1,9 +1,9 @@
 .modal {
   width: 600px;
-  border-radius: 10px;
+  border-radius: 5px;
   position: relative;
   padding: 25px;
-  background-color: #1a1a1a;
+  background-color: #242424;
 }
 .iconClose {
   position: absolute;

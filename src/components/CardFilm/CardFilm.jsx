@@ -66,14 +66,14 @@ function CardFilm({ film }) {
         </div>
         <p
           className={
-            film.rate >= 8.2
+            film.rating >= 8.2
               ? `${styles.rating} ${styles.colorGreen}`
-              : film.rate < 5
+              : film.rating < 5
               ? `${styles.rating} ${styles.colorRed}`
               : `${styles.rating}`
           }
         >
-          {film.rate}
+          {film.rating}
         </p>
       </div>
 
