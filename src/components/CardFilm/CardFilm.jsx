@@ -4,6 +4,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PropTypes from "prop-types";
 import { useFilmsStore } from "../../services/store";
+import { useNavigate } from "react-router-dom";
 
 function CardFilm({ film }) {
   const {
@@ -14,6 +15,8 @@ function CardFilm({ film }) {
     addLaterFilm,
     removeLaterFilm,
   } = useFilmsStore();
+
+  const navigate = useNavigate();
 
   const isLike = favoritesFilms.find((el) => el.id === film.id) ? true : false;
 
@@ -76,7 +79,7 @@ function CardFilm({ film }) {
 
       <img src={film.image} alt={film.title} className={styles.image} />
       <div className={styles.film}>
-        <h3 className={styles.title}>{film.title}</h3>
+        <h3 className={styles.title} onClick={() => navigate(`/film/${film.id}`)}>{film.title}</h3>
         <p className={styles.year}>{`Год выпуска ${film.release}`}</p>
         <p className={styles.description}>{film.shortdescription}</p>
         <p className={styles.description}>{`Актеры: ${actorsList}`}</p>

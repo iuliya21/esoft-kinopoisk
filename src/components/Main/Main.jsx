@@ -24,8 +24,8 @@ function Main() {
     setCurrentFilms(films);
   }, [films]);
 
-  const sortRate = () => {
-    const sortingFilms = [...currentFilms].sort((a, b) =>
+  const sortRate = (filmsSort) => {
+    const sortingFilms = [...filmsSort].sort((a, b) =>
       sortAscending ? a.rating - b.rating : b.rating - a.rating
     );
     setCurrentFilms(sortingFilms);
@@ -39,31 +39,58 @@ function Main() {
   const sortType = (type) => {
     switch (type) {
       case "film":
-        setCurrentFilms(filmList);
-        setActiveButtons((prevState) => ({
-          ...prevState,
-          film: true,
-          multfilm: false,
-          serial: false,
-        }));
+        if (activeButtons.film) {
+          setCurrentFilms(films);
+          setActiveButtons((prevState) => ({
+            ...prevState,
+            film: false,
+            sort: false,
+          }));
+        } else {
+          setCurrentFilms(filmList);
+          setActiveButtons({
+            sort: false,
+            film: true,
+            multfilm: false,
+            serial: false,
+          });
+        }
         break;
       case "multfilm":
-        setCurrentFilms(multfilmList);
-        setActiveButtons((prevState) => ({
-          ...prevState,
-          film: false,
-          multfilm: true,
-          serial: false,
-        }));
+        if (activeButtons.multfilm) {
+          setCurrentFilms(films);
+          setActiveButtons((prevState) => ({
+            ...prevState,
+            multfilm: false,
+            sort: false,
+          }));
+        } else {
+          setCurrentFilms(multfilmList);
+          setActiveButtons({
+            sort: false,
+            film: false,
+            multfilm: true,
+            serial: false,
+          });
+        }
         break;
       case "serial":
-        setCurrentFilms(serialList);
-        setActiveButtons((prevState) => ({
-          ...prevState,
-          film: false,
-          multfilm: false,
-          serial: true,
-        }));
+        if (activeButtons.serial) {
+          setCurrentFilms(films);
+          setActiveButtons((prevState) => ({
+            ...prevState,
+            serial: false,
+            sort: false,
+          }));
+        } else {
+          setCurrentFilms(serialList);
+          setActiveButtons({
+            sort: false,
+            film: false,
+            multfilm: false,
+            serial: true,
+          });
+        }
         break;
       default:
         break;
@@ -86,7 +113,7 @@ function Main() {
   return (
     <div className={styles.main}>
       <SortPanel
-        handleRate={sortRate}
+        handleRate={() => sortRate(currentFilms)}
         clearFilter={clearFilter}
         activeButtonSort={activeButtons.sort}
         activeButtonFilm={activeButtons.film}
