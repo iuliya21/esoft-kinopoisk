@@ -2,9 +2,9 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  row-gap: 8px;
+  row-gap: 4px;
   background-color: #101010;
-  width: 280px;
+  width: 220px;
 }
 .image {
   width: 100%;
