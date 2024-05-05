@@ -19,7 +19,7 @@ function App() {
 
   return (
     <>
-      <Sidebar />
+
       <div className={styles.content}>
         <div>
           <Header />
@@ -32,6 +32,7 @@ function App() {
         </div>
         <Footer />
       </div>
+      <Sidebar />
     </>
   );
 }

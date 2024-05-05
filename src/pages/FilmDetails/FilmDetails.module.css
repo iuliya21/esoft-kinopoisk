@@ -59,3 +59,10 @@ h2 {
   display: flex;
   justify-content: space-between;
 }
+.listSemilar {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  column-gap: 25px;
+  justify-content: center;
+}

@@ -42,7 +42,7 @@ function CardFilm({ film }) {
   };
 
   return (
-    <div className={styles.card}>
+    <li className={styles.card}>
       <div className={styles.headerCard}>
         <div className={styles.icons}>
           <AccessTimeIcon
@@ -86,7 +86,7 @@ function CardFilm({ film }) {
         <p className={styles.genre}>{`Жанр: ${genresList}`}</p>
         <p className={styles.country}>{`Страна: ${film.country}`}</p>
       </div>
-    </div>
+    </li>
   );
 }
 

@@ -19,7 +19,7 @@ function Modal({ children, onClosePopup }) {
     return () => {
       document.removeEventListener("keydown", closeByEsc);
     };
-  }, []);
+  }, [onClosePopup]);
 
   if (!modalRoot) {
     return null;

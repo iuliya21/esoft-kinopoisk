@@ -123,9 +123,7 @@ function Main() {
       />
       <ul className={styles.cards}>
         {currentFilms.map((film) => (
-          <li key={film.id}>
-            <CardFilm film={film} />
-          </li>
+          <CardFilm film={film} key={film.id} />
         ))}
       </ul>
     </div>
