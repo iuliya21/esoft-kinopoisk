@@ -21,7 +21,6 @@
   font-family: "Poppins", Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #000;
@@ -58,4 +57,8 @@ button {
 }
 button:hover {
   border-color: rgb(2, 92, 2);
+}
+body {
+  margin: 0;
+  box-sizing: border-box;
 }

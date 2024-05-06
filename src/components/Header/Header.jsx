@@ -11,7 +11,7 @@ function Header() {
         <h1 className={styles.logo}>КиноДом</h1>
         <OtherHousesIcon />
       </div>
-      <Button text="Поиск" search={true} />
+      <Button text="Поиск" search={true} onClick={() => navigate("/search")}/>
     </header>
   );
 }
