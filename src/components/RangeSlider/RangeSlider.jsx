@@ -1,8 +1,8 @@
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
-import { useState } from "react";
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@emotion/react";
+import PropTypes from "prop-types";
 
 let theme = createTheme({});
 
@@ -17,9 +17,7 @@ theme = createTheme(theme, {
   },
 });
 
-function RangeSlider() {
-
-  const [value, setValue] = useState([1994, 2017]);
+function RangeSlider({value, setValue}) {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -27,7 +25,7 @@ function RangeSlider() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ width: 300 }}>
+      <Box sx={{ width: 280 }}>
         <Slider
           getAriaLabel={() => "Years range"}
           value={value}
@@ -42,5 +40,10 @@ function RangeSlider() {
     </ThemeProvider>
   );
 }
+
+RangeSlider.propTypes = {
+  value: PropTypes.array,
+  setValue: PropTypes.func,
+};
 
 export default RangeSlider;

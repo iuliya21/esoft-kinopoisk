@@ -1,4 +1,4 @@
-.container {
+.containerForm {
   max-width: 50%;
   margin: 40px auto 0;
   
@@ -47,4 +47,27 @@
 }
 .range {
   color: #2ecc71;
+}
+.errorCheckbox {
+  margin-top: 5px;
+  color: rgb(241, 126, 126);
+  max-width: 250px;
+  font-size: 14px;
+}
+.films {
+  display: flex;
+  column-gap: 25px;
+  
+  justify-content: center;
+  margin: 30px auto 0;
+  flex-wrap: wrap;
+}
+.result {
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: 30px auto 0;
+}
+.titleResult {
+  text-align: center;
 }
