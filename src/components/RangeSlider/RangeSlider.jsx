@@ -32,7 +32,7 @@ function RangeSlider({value, setValue}) {
           onChange={handleChange}
           valueLabelDisplay="on"
           min={1994}
-          max={2017}
+          max={2018}
           disableSwap
           color="myGreen"
         />

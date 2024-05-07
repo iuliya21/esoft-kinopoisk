@@ -28,7 +28,7 @@ function SearchPage() {
   const { films } = useFilmsStore();
 
   const [currentFilms, setcurrentFilms] = useState([]);
-  const [sliderValue, setSliderValue] = useState([1994, 2017]);
+  const [sliderValue, setSliderValue] = useState([1994, 2018]);
 
   const [errorValidateCheckbox, setErrorValidateCheckbox] = useState(false);
 
