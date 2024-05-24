@@ -1,0 +1,39 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  background-color: #151515;
+  padding: 40px 20px;
+  border-right: 1px solid #ccc;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+h3 {
+  margin: 0;
+}
+.container {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  margin-left: 40px;
+}
+.title {
+  margin: 0;
+}
+.listFilms {
+  padding: 0 20px;
+  list-style-type: none;
+  margin: 0;
+}
+.elementList {
+  display: flex;
+  margin-top: 10px;
+  margin-left: 40px;
+}
+.clearIcon {
+  cursor: pointer;
+}

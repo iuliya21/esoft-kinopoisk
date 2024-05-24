@@ -1,0 +1,16 @@
+.pagination {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.pageCurrent {
+  font-size: 20px;
+}
+.arrow {
+  cursor: pointer;
+}
+.inactive {
+  color: grey;
+  cursor: default;
+}
